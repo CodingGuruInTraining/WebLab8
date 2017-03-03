@@ -1,6 +1,6 @@
-node_modules;
-.idea;
-key.txt;
+node_modules
+.idea
+key.txt
 
 
 
