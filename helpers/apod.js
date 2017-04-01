@@ -1,7 +1,7 @@
 var request = require('request');
 var moment = require('moment');
 
-
+// Defines initial part of URL addrress.
 var baseURL = 'https://api.nasa.gov/planetary/apod';
 
 // Makes requests to NASA's APOD service using request.
@@ -15,6 +15,7 @@ function apodRequest(callback, today) {
     var queryParam = {};
     var APIKEY = process.env.APOD_API_KEY;  // Make sure an environment variable is set, containing a valid APOD key
 
+    // Checks what date was passed.
     if (today) {
         queryParam = { 'api_key' : APIKEY };
     }
@@ -43,7 +44,6 @@ function apodRequest(callback, today) {
         }
     });
 }
-
 
 /* Reformat the response for use in the template.
  * Generates an appropriate credit message,
@@ -91,7 +91,6 @@ function processAPODresponse(today, apodJSON){
     if (today) {
         apodJSON.nasa_url = baseURL;
     }
-
     else {
         var imgDate = moment(apodJSON.date);
         var filenameDate = imgDate.format("YYMMDD");
