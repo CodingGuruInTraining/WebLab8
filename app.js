@@ -5,8 +5,12 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var hbs = require('express-handlebars');
+var session = require('express-session');
+var MongoDBStore = require('connect-mongodb-session')(session);
 
 var index = require('./routes/index');
+var favorites = require('./routes/favorites');
+
 var users = require('./routes/users');
 
 var app = express();
@@ -28,7 +32,26 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+// var mongo_pw = process.env.MONGO_PW;
+// var url = 'mongodb://localhost:27017/helloSessions';
+var url = process.env.MONGO_URL;
+var store = new MongoDBStore({
+    uri: url,
+    collection: 'sessions'
+}, function(error) {
+  if (error) console.log(error)
+});
+app.use(session({
+  secret: "put a random string here",
+    resave: false,
+    saveUninitialized: false,
+    store: store
+}));
+
+
+
 app.use('/', index);
+app.use('/favorites', favorites);
 app.use('/users', users);
 
 // catch 404 and forward to error handler
