@@ -7,6 +7,10 @@
         </a>
         <p class="favtitle">{{this.title}}</p>
         <p class="favdate">{{this.date}}</p>
+        <form id="/delete">
+            <button type="submit" id="delete">Remove</button>
+            <input type="hidden" name="date" value="{{this.date}}">
+        </form>
     </div>
 {{else}}
     <p>No favorites saved yet.</p>

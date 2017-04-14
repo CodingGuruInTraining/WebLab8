@@ -21,4 +21,26 @@ router.post('/add', function(req, res, next) {
     res.redirect('/favorites');
 });
 
+
+router.post('/delete', function(req, res, next) {
+    // req.db.collection('astropix').deleteOne(req.body, function(err) {
+    //     if (err) {
+    //         return next(err);
+    //     }
+    //     return res.redirect('back');
+    // })
+
+    for (var x = 0; x < req.session.favorites.length; x++) {
+        console.log("hey");
+        if (req.session.favorites[x].date == req.body.date) {
+
+            console.log("goodbye: " + req.session.favorites[x].date)
+            req.session.favorites[x].delete;
+            return res.redirect('back');
+        }
+    }
+
+});
+
+
 module.exports = router;
