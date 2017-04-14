@@ -22,20 +22,20 @@ router.post('/add', function(req, res, next) {
 });
 
 
-router.post('/delete', function(req, res, next) {
+router.post('favorites/delete', function(req, res, next) {
     // req.db.collection('astropix').deleteOne(req.body, function(err) {
     //     if (err) {
     //         return next(err);
     //     }
     //     return res.redirect('back');
     // })
-
+    console.log("there are this many items in array: " + req.session.favorites.length);
     for (var x = 0; x < req.session.favorites.length; x++) {
-        console.log("hey");
+        console.log(req.session.favorites[x].date);
         if (req.session.favorites[x].date == req.body.date) {
-
-            console.log("goodbye: " + req.session.favorites[x].date)
-            req.session.favorites[x].delete;
+req.session.favorites[x].
+            console.log("goodbye: " + req.session.favorites[x].date);
+            delete req.session.favorites[x];
             return res.redirect('back');
         }
     }
