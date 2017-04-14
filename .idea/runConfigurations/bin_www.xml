@@ -3,7 +3,7 @@
     <envs>
       <env name="DEBUG" value="Lab8:*" />
       <env name="APOD_API_KEY" value="eOL4HdZg5rOe4UNY5J7DVGqMrr0rN96nV4JhwT4Q" />
-      <env name="MONGODB_URL" value="mongodb://userfox:foxuser@ds161410.mlab.com:61410/astropix" />
+      <env name="MONGO_URL" value="mongodb://userfox:foxuser@ds161410.mlab.com:61410/astropix" />
     </envs>
     <browser url="http://localhost:3000/" />
     <profiling v8-profiler-path="" />
