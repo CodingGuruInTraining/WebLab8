@@ -7,7 +7,7 @@ router.get('/', function(req, res, next) {
 
 router.post('/add', function(req, res, next) {
 
-    console.log(req.session.favorites.length);
+    // console.log(req.session.favorites.length);
 
     if (!req.session.favorites) {
         req.session.favorites = [];
@@ -45,7 +45,7 @@ router.post('/delete', function(req, res, next) {
             // delete req.session.favorites[x];
             // req.session.favorites.remove(x);
             console.log(req.session.favorites[x]);
-            // req.session.favorites.splice(x,1);
+            req.session.favorites.splice(x,1);
             return res.redirect('back');
         }
     }
