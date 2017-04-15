@@ -1,5 +1,5 @@
 <h1>Favorites</h1>
-
+<!--Creates a new div element for each favorites item.-->
 {{#each favorites}}
     <div class="favitem" id="{{this.date}}">
         <a href="{{this.nasa_url}}">
@@ -15,5 +15,5 @@
 {{else}}
     <p>No favorites saved yet.</p>
 {{/each}}
-
+<!--Displays navigation buttons.-->
 {{> navigation}}
